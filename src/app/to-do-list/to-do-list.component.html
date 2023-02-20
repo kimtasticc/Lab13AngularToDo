@@ -1,0 +1,40 @@
+<style>
+    #list {
+    background-color: white;
+    margin: auto;
+    margin-bottom: 25px;
+    width: 45%;
+    padding-right: 2%;
+    text-align:center;
+    border: 3px solid #bbb;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    }
+
+    h3, form {
+        text-align:center;
+    }
+
+
+    li {
+        list-style-type: none;
+        padding: 2%;
+    }
+</style>
+
+<h3>To-Do List:</h3>
+
+<div id="list">
+    <ul>
+        <li *ngFor="let listItem of toDoList">{{listItem.task}}
+    <span *ngIf="!listItem.completed">
+        <button (click)="completeTask()">Complete</button>
+    </span>
+        </li>
+    </ul>
+</div>
+
+<form #taskForm="ngForm" (ngSubmit)="addTask(taskForm)">
+    <label for="task">Enter a new task:</label><br><br>
+   <input name="task" id="task" ngModel />
+   <button>Add to List</button>
+  </form>
